@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+        <TextView
+            android:id="@+id/toolbar_title"
+            style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text=""
+            android:textColor="@android:color/white" />
+
+    </android.support.v7.widget.Toolbar>
+
+    <LinearLayout
+        android:id="@+id/titleEditor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar"
+        android:orientation="horizontal">
+
+        <org.adw.library.widgets.discreteseekbar.DiscreteSeekBar
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/discret"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.9"
+            app:dsb_indicatorColor="@color/accent"
+            app:dsb_max="5"
+            app:dsb_min="1"
+            app:dsb_trackHeight="6dp"
+            app:dsb_scrubberHeight="10dp"
+            app:dsb_progressColor="@color/primary"
+            app:dsb_trackColor="@color/accent"
+            android:layout_gravity="center"
+            app:dsb_value="3" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/color_image"
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="6dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginRight="12dp"
+            android:src="#F44336"
+            app:civ_border_color="#607D8B"
+            app:civ_border_width="1dp" />
+
+        <!--<com.rtugeek.android.colorseekbar.ColorSeekBar
+            android:id="@+id/colorSlider"
+            android:layout_width="match_parent"
+            app:colors="@array/material_colors"
+            android:layout_height="wrap_content" />-->
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/frame_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/titleEditor"
+        android:orientation="vertical">
+
+        <com.ifyou.yobbo.CanvasView
+            android:id="@+id/signature_canvas"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal" />
+
+        <com.github.clans.fab.FloatingActionMenu
+            xmlns:fab="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/fab_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/fab_margin"
+            fab:menu_labels_style="@style/MenuLabelsStyle"
+            fab:menu_labels_showAnimation="@anim/jump_from_down"
+            fab:menu_labels_hideAnimation="@anim/jump_to_down"
+            fab:menu_animationDelayPerItem="0"
+            fab:menu_colorNormal="#4CAF50"
+            fab:menu_colorPressed="#92ca64"
+            fab:menu_colorRipple="#99FFFFFF">
+
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/fabC"
+                style="@style/MenuButtonsStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_crop_white_24dp"
+                fab:fab_label="@string/crop"/>
+
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/fabE"
+                style="@style/MenuButtonsStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_create_white_24dp"
+                fab:fab_label="@string/edit"/>
+
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/fabS"
+                style="@style/MenuButtonsStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_send_white_24dp"
+                fab:fab_label="@string/send" />
+
+
+        </com.github.clans.fab.FloatingActionMenu>
+
+        <!--<android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/fab_margin"
+            android:src="@drawable/ic_create_white_48dp" />-->
+
+        <!--<android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_mini"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|start"
+            android:layout_margin="@dimen/fab_margin"
+            app:fabSize="mini" />-->
+
+    </FrameLayout>
+
+</RelativeLayout>

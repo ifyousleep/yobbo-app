@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Yobbo</string>
+    <string name="animal">Животные</string>
+    <string name="ars">Кот Арсений</string>
+    <string name="avc">Страна огромная</string>
+    <string name="baranov">Артём Баранов</string>
+    <string name="baranov_txt">Разработчик</string>
+    <string name="black">Черный</string>
+    <string name="dblue">Синий</string>
+    <string name="blue">Голубой</string>
+    <string name="yellow">Желтый</string>
+    <string name="dgreen">Салатовый</string>
+    <string name="orange">Оранжевый</string>
+    <string name="brown">Коричневый</string>
+    <string name="gray">Серый</string>
+    <string name="color_select">Нажми, чтобы выбрать цвет</string>
+    <string name="text_select">Выбери размер текста</string>
+    <string name="color_summary">Цвет текста</string>
+    <string name="color_title">Цвет текста</string>
+    <string name="cyan">Цианид и Счастье</string>
+    <string name="dib">Диб Хлебушек</string>
+    <string name="btn_next">Дальше</string>
+    <string name="drawer_item_about">Авторы</string>
+    <string name="drawer_item_home">Стикеры</string>
+    <string name="drawer_item_rate">Оценить</string>
+    <string name="send">Отправить...</string>
+    <string name="edit">Подписать</string>
+    <string name="crop">Кадрировать</string>
+    <string name="drawer_item_settings">Настройки</string>
+    <string name="face">Рукалицо</string>
+    <string name="fo_fab">Жми плюсик</string>
+    <string name="fo_tool">Жми отправить</string>
+    <string name="font_summary">Шрифт</string>
+    <string name="font_title">Шрифт текста</string>
+    <string name="futur">Футурама</string>
+    <string name="googlep">\nGOOGLE+</string>
+    <string name="cut">Cut the Rope</string>
+    <string name="hick">Цыпа</string>
+    <string name="green">Зелёный</string>
+    <string name="input_dialog">Ввод текста</string>
+    <string name="kizim">Алёна Кизим</string>
+    <string name="kizim_txt">Автор идеи и дизайна</string>
+    <string name="large">Большой</string>
+    <string name="list_summary">Текст</string>
+    <string name="list_title">Размер текста</string>
+    <string name="manul">Манул</string>
+    <string name="need_text">...</string>
+    <string name="normal">Обычный</string>
+    <string name="ok">Ок</string>
+    <string name="other">Другое</string>
+    <string name="peppa">Свинка Пеппа</string>
+    <string name="boroda">Бородач</string>
+    <string name="goo">Неуравновешенный</string>
+    <string name="har">Гарольд, прячущий боль</string>
+    <string name="gad">Гадкий Я</string>
+    <string name="pigeons">Голуби</string>
+    <string name="emo">Эмоции</string>
+    <string name="wwf">WWF</string>
+    <string name="pref_header_ui">Интерфейс</string>
+    <string name="pref_summary_stroke">Обводка текста</string>
+    <string name="pref_title_stroke">Стиль</string>
+    <string name="pusheen">Коты</string>
+    <string name="rage">Мемы</string>
+    <string name="red">Красный</string>
+    <string name="roman">Жизнь Романа</string>
+    <string name="senya">Сеня</string>
+    <string name="rr">Гарри</string>
+    <string name="simon">Кот Саймона</string>
+    <string name="be">Медведь в кустах</string>
+    <string name="simp">Симпсоны</string>
+    <string name="small">Маленький</string>
+    <string name="vlarge">Огромный</string>
+    <string name="vsmall">Миниатюрный</string>
+    <string name="white">Белый</string>
+    <string name="whoiam">Кто я сегодня</string>
+    <string name="wow">Ничоси</string>
+    <string name="save_location">%1$s/Yobbo/</string>
+    <string name="font_system">Системный шрифт</string>
+    <string-array name="entries_font">
+        <item>IRINA_C</item>
+        <item>RoundsBlack</item>
+        <item>a_SimplerClg</item>
+        <item>impact</item>
+        <item>Intro Inline</item>
+        <item>Системный шрифт</item>
+    </string-array>
+    <string-array name="entries_color">
+        <item>Чёрный</item>
+        <item>Белый</item>
+        <item>Красный</item>
+        <item>Зелёный</item>
+        <item>Синий</item>
+    </string-array>
+    <string-array name="entries">
+        <item>Миниатюрный</item>
+        <item>Маленький</item>
+        <item>Обычный</item>
+        <item>Большой</item>
+        <item>Огромный</item>
+    </string-array>
+    <string name="open">Открыть</string>
+    <string name="adv">Время приключений</string>
+    <string name="coy">Койот Кет</string>
+    <string name="fox">Лисонька</string>
+    <string name="pea">Персик</string>
+    <string name="fro">Лягушка Пепе</string>
+    <string name="smi">Смайлы</string>
+    <string name="pool">Дэдпул</string>
+    <string name="gar">Гарфилд</string>
+    <string name="spa">Губка Боб</string>
+    <string name="ice">Ледниковый период</string>
+    <string name="noconnect">Нет подключения</string>
+    <string name="hello">ПРИВЕТ</string>
+    <string name="purple">Фиолетовый</string>
+    <string name="permission_title_rationale">Permission needed</string>
+    <string name="permission_write_storage_rationale">Storage write permission is needed to save the image.</string>
+    <string name="permission_read_storage_rationale">Storage read permission is needed to pick files.</string>
+    <string name="toast_cannot_retrieve_selected_image">Cannot retrieve selected image</string>
+    <string name="toast_unexpected_error">Unexpected error</string>
+    <string name="toast_cannot_retrieve_cropped_image">Cannot retrieve cropped image</string>
+    <string name="pref_header_other">Другое</string>
+    <string name="pref_title_anim">Анимация</string>
+    <string name="pref_summary_anim">Включить анимацию интерфейса</string>
+</resources>

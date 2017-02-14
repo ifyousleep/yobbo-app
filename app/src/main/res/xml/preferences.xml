@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:key="uiPreferences"
+        android:title="@string/pref_header_ui">
+
+        <Preference
+            android:persistent="true"
+            android:key="sizeoftext"
+            android:summary="@string/list_summary"
+            android:title="@string/list_title">
+        </Preference>
+
+        <Preference
+            android:persistent="true"
+            android:key="coloroftext"
+            android:summary="@string/color_summary"
+            android:title="@string/color_title">
+        </Preference>
+
+        <Preference
+            android:persistent="true"
+            android:key="fontoftext"
+            android:summary="@string/font_summary"
+            android:title="@string/font_title">
+        </Preference>
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="strokeoftext"
+            android:summary="@string/pref_summary_stroke"
+            android:title="@string/pref_title_stroke"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="uiPreferences"
+        android:title="@string/pref_header_other">
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="setanim"
+            android:summary="@string/pref_summary_anim"
+            android:title="@string/pref_title_anim"/>
+
+    </PreferenceCategory>
+</PreferenceScreen>

@@ -1,0 +1,58 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <EditText
+        android:id="@+id/edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:maxLength="32" />
+
+<!--    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/wall_frame_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/bold"
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:layout_gravity="start"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            app:civ_border_width="2dp"
+            app:civ_border_color="@color/gray_m"
+            android:src="@drawable/ic_format_bold_green_900_18dp" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/ital"
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            app:civ_border_width="2dp"
+            app:civ_border_color="@color/gray_m"
+            android:src="@drawable/ic_format_italic_green_900_18dp" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/under"
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            app:civ_border_width="2dp"
+            app:civ_border_color="@color/gray_m"
+            android:src="@drawable/ic_format_underlined_green_900_18dp" />
+
+    </LinearLayout>-->
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:text="0" />
+
+</LinearLayout>

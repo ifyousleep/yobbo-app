@@ -1,0 +1,47 @@
+<FrameLayout
+    android:id="@+id/wall_frame_layout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:foreground="?selectableItemBackground">
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:visibility="visible"
+        android:layout_margin="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        style="?android:attr/progressBarStyleLarge"/>
+
+    <com.ifyou.yobbo.SquaredImageView
+        android:id="@+id/country_photo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/action_settings"
+        android:scaleType="centerCrop"
+        tools:ignore="ContentDescription, UnusedAttribute"/>
+
+    <LinearLayout
+        android:id="@+id/titleBg"
+        style="@style/ListsContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="vertical"
+        android:background="@color/semitransparent_black"
+        tools:ignore="UnusedAttribute">
+
+    <TextView
+        android:id="@+id/country_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:singleLine="true"
+        android:text="@string/country_name"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textColor="@android:color/white" />
+
+    </LinearLayout>
+
+</FrameLayout>
