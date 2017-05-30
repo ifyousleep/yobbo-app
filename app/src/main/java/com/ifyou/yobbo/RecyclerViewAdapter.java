@@ -3,7 +3,6 @@ package com.ifyou.yobbo;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
@@ -33,15 +32,14 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.RecyclerViewHolders> {
+class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.RecyclerViewHolders> {
 
-    private List<ItemObject> itemList;
-    private Context context;
-    OnItemClickListener mItemClickListener;
+    private final List<ItemObject> itemList;
+    private final Context context;
+    private OnItemClickListener mItemClickListener;
     private int lastPosition = -1;
-    boolean anim;
 
-    public RecyclerViewAdapter(Context context, List<ItemObject> itemList) {
+    RecyclerViewAdapter(Context context, List<ItemObject> itemList) {
         this.itemList = itemList;
         this.context = context;
     }
@@ -49,8 +47,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public RecyclerViewHolders onCreateViewHolder(ViewGroup parent, int viewType) {
         View layoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_view_list, null);
-        RecyclerViewHolders rcv = new RecyclerViewHolders(layoutView);
-        return rcv;
+        return new RecyclerViewHolders(layoutView);
     }
 
     private void setAnimation(View viewToAnimate, int position) {
@@ -66,7 +63,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     private int getColorWithAplha(int color, float ratio) {
-        int transColor = 0;
+        int transColor;
         int alpha = Math.round(Color.alpha(color) * ratio);
         int r = Color.red(color);
         int g = Color.green(color);
@@ -123,7 +120,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 });
         Preferences mPrefs;
         mPrefs = new Preferences(context);
-        anim = mPrefs.getAnimEnabled();
+        boolean anim = mPrefs.getAnimEnabled();
         if (anim)
             setAnimation(holder.container, position);
     }
@@ -167,7 +164,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onViewDetachedFromWindow(RecyclerViewHolders holder) {
         super.onViewDetachedFromWindow(holder);
-        ((RecyclerViewHolders) holder).clearAnimation();
+        holder.clearAnimation();
     }
 
     @Override
@@ -175,15 +172,15 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         return this.itemList.size();
     }
 
-    public class RecyclerViewHolders extends RecyclerView.ViewHolder implements View.OnClickListener {
+    class RecyclerViewHolders extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        public TextView countryName;
-        public ImageView countryPhoto;
-        public final LinearLayout titleBg;
-        public FrameLayout container;
-        public ProgressBar pb;
+        private final TextView countryName;
+        private final ImageView countryPhoto;
+        private final LinearLayout titleBg;
+        private final FrameLayout container;
+        private final ProgressBar pb;
 
-        public RecyclerViewHolders(View itemView) {
+        RecyclerViewHolders(View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
             container = (FrameLayout) itemView.findViewById(R.id.wall_frame_layout);
@@ -193,23 +190,23 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             pb = (ProgressBar) itemView.findViewById(R.id.progressBar);
         }
 
-        public void clearAnimation() {
+        void clearAnimation() {
             container.clearAnimation();
         }
 
         @Override
         public void onClick(View view) {
             if (mItemClickListener != null) {
-                mItemClickListener.onItemClick(view, getPosition());
+                mItemClickListener.onItemClick(view, getAdapterPosition());
             }
         }
     }
 
-    public interface OnItemClickListener {
-        public void onItemClick(View view, int position);
+    interface OnItemClickListener {
+        void onItemClick(View view, int position);
     }
 
-    public void SetOnItemClickListener(final OnItemClickListener mItemClickListener) {
+    void SetOnItemClickListener(final OnItemClickListener mItemClickListener) {
         this.mItemClickListener = mItemClickListener;
     }
 }

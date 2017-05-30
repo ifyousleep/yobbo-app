@@ -57,20 +57,18 @@ import io.github.douglasjunior.androidSimpleTooltip.SimpleTooltip;
 public class EditorActivity extends AppCompatActivity {
 
     private CanvasView customCanvas;
-    private com.github.clans.fab.FloatingActionButton fabS;
     private com.github.clans.fab.FloatingActionButton fabE;
     private com.github.clans.fab.FloatingActionButton fabC;
     private DiscreteSeekBar discrete;
-    FloatingActionMenu fam;
-    Toolbar toolbar;
-    TextView mTitle;
-    CircleImageView setcolor;
+    private FloatingActionMenu fam;
+    private Toolbar toolbar;
+    private TextView mTitle;
+    private CircleImageView setcolor;
     private String textG;
     int numberData, enableCE;
     private TextView txt;
     private static final String SAMPLE_CROPPED_IMAGE_NAME = "crop";
     protected static final int REQUEST_STORAGE_WRITE_ACCESS_PERMISSION = 102;
-    private AlertDialog mAlertDialog;
     private ExitActivityTransition exitTransition;
     boolean anim;
     private Preferences mPrefs;
@@ -152,7 +150,7 @@ public class EditorActivity extends AppCompatActivity {
 
         textG = "";
 
-        fabS = (com.github.clans.fab.FloatingActionButton) findViewById(R.id.fabS);
+        com.github.clans.fab.FloatingActionButton fabS = (com.github.clans.fab.FloatingActionButton) findViewById(R.id.fabS);
         fabE = (com.github.clans.fab.FloatingActionButton) findViewById(R.id.fabE);
         fabC = (com.github.clans.fab.FloatingActionButton) findViewById(R.id.fabC);
         fabS.setOnClickListener(new View.OnClickListener() {
@@ -254,7 +252,7 @@ public class EditorActivity extends AppCompatActivity {
         }
 
         public void onTextChanged(CharSequence s, int start, int before, int count) {
-            txt.setText(String.valueOf(s.length()) + "/32");
+            txt.setText(String.format("%s/32", String.valueOf(s.length())));
             if (s.length() <= 30)
                 txt.setTextColor(Color.GREEN);
             else
@@ -336,7 +334,7 @@ public class EditorActivity extends AppCompatActivity {
         builder.setMessage(message);
         builder.setPositiveButton(positiveText, onPositiveButtonClickListener);
         builder.setNegativeButton(negativeText, onNegativeButtonClickListener);
-        mAlertDialog = builder.show();
+        AlertDialog alertDialog = builder.show();
     }
 
     /**

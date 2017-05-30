@@ -26,7 +26,7 @@ public class CanvasView extends View {
 
     private Bitmap mBitmap;
     private Bitmap sBitmap;
-    Context context;
+    final Context context;
     private float mX, mY;
     private static final float TOLERANCE = 5;
     //private float mAngle;

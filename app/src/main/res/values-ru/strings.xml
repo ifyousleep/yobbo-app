@@ -24,7 +24,7 @@
     <string name="drawer_item_about">Авторы</string>
     <string name="drawer_item_home">Стикеры</string>
     <string name="drawer_item_rate">Оценить</string>
-    <string name="send">Отправить...</string>
+    <string name="send">Отправить…</string>
     <string name="edit">Подписать</string>
     <string name="crop">Кадрировать</string>
     <string name="drawer_item_settings">Настройки</string>
@@ -45,7 +45,7 @@
     <string name="list_summary">Текст</string>
     <string name="list_title">Размер текста</string>
     <string name="manul">Манул</string>
-    <string name="need_text">...</string>
+    <string name="need_text">…</string>
     <string name="normal">Обычный</string>
     <string name="ok">Ок</string>
     <string name="other">Другое</string>
@@ -122,4 +122,6 @@
     <string name="pref_header_other">Другое</string>
     <string name="pref_title_anim">Анимация</string>
     <string name="pref_summary_anim">Включить анимацию интерфейса</string>
+    <string name="help">Help</string>
+    <string name="_0">0</string>
 </resources>

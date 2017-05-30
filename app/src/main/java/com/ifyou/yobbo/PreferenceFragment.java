@@ -70,10 +70,8 @@ public abstract class PreferenceFragment extends Fragment {
         ListView listView = new ListView(getActivity());
         listView.setId(android.R.id.list);
         listView.setDividerHeight(0);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-            final int horizontalPadding = (int) (HC_HORIZONTAL_PADDING * getResources().getDisplayMetrics().density);
-            listView.setPadding(horizontalPadding, 0, horizontalPadding, 0);
-        }
+        final int horizontalPadding = (int) (HC_HORIZONTAL_PADDING * getResources().getDisplayMetrics().density);
+        listView.setPadding(horizontalPadding, 0, horizontalPadding, 0);
         return listView;
     }
 

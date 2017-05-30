@@ -19,3 +19,8 @@
 -keep class com.google.**
 -dontwarn com.google.**
 -keep public class com.android.vending.licensing.ILicensingService
+-dontwarn okio.**
+-keep class .R
+-keep class **.R$* {
+    <fields>;
+}

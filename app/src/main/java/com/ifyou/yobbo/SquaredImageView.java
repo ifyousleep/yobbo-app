@@ -1,16 +1,14 @@
 package com.ifyou.yobbo;
 
-import android.annotation.TargetApi;
 import android.content.Context;
-import android.os.Build;
+import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
-import android.widget.ImageView;
 
 /**
  * @author Aidan Follestad (afollestad)
  */
 
-public class SquaredImageView extends ImageView {
+public class SquaredImageView extends AppCompatImageView {
 
     public SquaredImageView(Context context) {
         super(context);
@@ -24,10 +22,10 @@ public class SquaredImageView extends ImageView {
         super(context, attrs, defStyleAttr);
     }
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    /*@TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public SquaredImageView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
-    }
+    }*/
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {

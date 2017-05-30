@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Yobbo.iml" filepath="$PROJECT_DIR$/Yobbo.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/yobbo-app.iml" filepath="$PROJECT_DIR$/yobbo-app.iml" />
     </modules>
   </component>
 </project>

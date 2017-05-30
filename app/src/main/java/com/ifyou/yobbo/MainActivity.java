@@ -29,7 +29,6 @@ import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
-import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
 import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
@@ -60,7 +59,6 @@ public class MainActivity extends AppCompatActivity {
         Global.img = null;
 
         //ToDo
-
         new PiracyChecker(this)
                 .enableGooglePlayLicensing("MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAk1TbKBSaPN7zlaa+MRN+i+bTqutydUao1QTHqNLJ+ZPmppgbD78TLF57T8bKXlediSJqTBra65Z7tdRZCUHzKAiDhBLoUBZ2lQWtW/v5g6G6C+e7Mxgh6rZf9ATTlW/WxCdHH/1kbvxylUKzyMXiD4McjMbzMUR0fn8xopWuIsWxsnPSEE3jK+/MOWXLMbpex7FJo7Icw4/oPLeNt0QZqyHjragoaVelqC3ionKalL6u+ZMEIV0P/7GgAdrcn/LpzK1wfRLkpJGelfFRGPWYZ9siZMxz1fOmEMdIrlCnJl+IQSxAsQciOQnfUO5W5sVPM35yi41wRZIrOCkghPx5CwIDAQAB")
                 .enableInstallerId(InstallerID.GOOGLE_PLAY)
@@ -90,11 +88,11 @@ public class MainActivity extends AppCompatActivity {
                 .withHasStableIds(true)
                 .withAccountHeader(headerResult)
                 .addDrawerItems(
-                        new PrimaryDrawerItem().withName(R.string.drawer_item_home).withIdentifier(1).withIcon(GoogleMaterial.Icon.gmd_home),
-                        new SecondaryDrawerItem().withName(R.string.open).withIdentifier(5).withIcon(GoogleMaterial.Icon.gmd_file_add),
+                        new SecondaryDrawerItem().withName(R.string.drawer_item_home).withIdentifier(1).withIcon(GoogleMaterial.Icon.gmd_home),
+                        new SecondaryDrawerItem().withName(R.string.open).withIdentifier(5).withIcon(GoogleMaterial.Icon.gmd_file_upload).withSelectable(false),
                         new SecondaryDrawerItem().withName(R.string.drawer_item_settings).withIdentifier(3).withIcon(GoogleMaterial.Icon.gmd_settings),
                         new SecondaryDrawerItem().withName(R.string.drawer_item_about).withIdentifier(2).withIcon(GoogleMaterial.Icon.gmd_help),
-                        new SecondaryDrawerItem().withName(R.string.drawer_item_rate).withIdentifier(4).withIcon(GoogleMaterial.Icon.gmd_google_play)
+                        new SecondaryDrawerItem().withName(R.string.drawer_item_rate).withIdentifier(4).withIcon(GoogleMaterial.Icon.gmd_rate_review).withSelectable(false)
                 )
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
@@ -135,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
                 getSupportFragmentManager().beginTransaction()
                         .setCustomAnimations(R.anim.enter, R.anim.exit, R.anim.pop_enter, R.anim.pop_exit)
                         .replace(R.id.main, Fragment.instantiate(MainActivity.this,
-                                "com.ifyou.yobbo.AbourFragment"))
+                                "com.ifyou.yobbo.AboutFragment"))
                         .commit();
                 toolbar.setTitle(R.string.drawer_item_about);
                 break;
@@ -158,8 +156,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void pickFromGallery() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN
-                && ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED) {
             requestPermission(Manifest.permission.READ_EXTERNAL_STORAGE,
                     getString(R.string.permission_read_storage_rationale),
@@ -208,11 +205,12 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    protected void showAlertDialog(@Nullable String title, @Nullable String message,
-                                   @Nullable DialogInterface.OnClickListener onPositiveButtonClickListener,
-                                   @NonNull String positiveText,
-                                   @Nullable DialogInterface.OnClickListener onNegativeButtonClickListener,
-                                   @NonNull String negativeText) {
+    protected void showAlertDialog(
+            @Nullable String title, @Nullable String message,
+            @Nullable DialogInterface.OnClickListener onPositiveButtonClickListener,
+            @NonNull String positiveText,
+            @Nullable DialogInterface.OnClickListener onNegativeButtonClickListener,
+            @NonNull String negativeText) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(title);
         builder.setMessage(message);
@@ -302,7 +300,6 @@ public class MainActivity extends AppCompatActivity {
             case android.R.id.home:
                 onBackPressed();
                 return true;
-
             default:
                 return super.onOptionsItemSelected(item);
         }

@@ -28,7 +28,6 @@ public class StickActivity extends AppCompatActivity {
 
     int numberData;
     boolean anim;
-    private ExitActivityTransition exitTransition;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -224,6 +223,7 @@ public class StickActivity extends AppCompatActivity {
             }
         });
 
+        ExitActivityTransition exitTransition;
         if (anim)
             exitTransition = ActivityTransition
                     .with(getIntent())

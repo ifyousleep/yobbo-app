@@ -24,10 +24,9 @@ import java.util.List;
 
 public class MainFragment extends Fragment {
 
-    private static ViewGroup layout;
-    private static Activity context;
+    ViewGroup layout;
+    Activity context;
     boolean anim;
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,
@@ -112,9 +111,8 @@ public class MainFragment extends Fragment {
     }
 
     private List<ItemObject> getAllItemList() {
-
         String url = "https://raw.githubusercontent.com/ifyousleep/stick/master/";
-        List<ItemObject> allItems = new ArrayList<ItemObject>();
+        List<ItemObject> allItems = new ArrayList<>();
         allItems.add(new ItemObject(getResources().getString(R.string.pusheen), url + "push.png"));
         allItems.add(new ItemObject(getResources().getString(R.string.rage), url + "rage.png"));
         allItems.add(new ItemObject(getResources().getString(R.string.ars), url + "ars.png"));

@@ -4,7 +4,7 @@
     <item
         android:id="@+id/miProfile"
         android:icon="@drawable/ic_help_white_36dp"
-        android:title="Help"
+        android:title="@string/help"
         app:showAsAction="ifRoom|withText">
     </item>
 </menu>

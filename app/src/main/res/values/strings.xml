@@ -30,7 +30,7 @@
     </string-array>
 
     <string name="save_location">%1$s/Yobbo/</string>
-    <string name="send">Send to...</string>
+    <string name="send">Send to…</string>
     <string name="edit">Edit text</string>
     <string name="crop">Crop image</string>
     <string name="color_title">Color text</string>
@@ -86,8 +86,8 @@
     <string name="fo_tool">Click send</string>
 
     <string name="input_dialog">Set text here</string>
-    <string name="ok">ok</string>
-    <string name="need_text">...</string>
+    <string name="ok">OK</string>
+    <string name="need_text">…</string>
     <string name="zero" translatable="false"> </string>
     <string name="googlep">\nGOOGLE+</string>
 
@@ -138,4 +138,6 @@
     <string name="toast_cannot_retrieve_selected_image">Cannot retrieve selected image</string>
     <string name="toast_unexpected_error">Unexpected error</string>
     <string name="toast_cannot_retrieve_cropped_image">Cannot retrieve cropped image</string>
+    <string name="help">Help</string>
+    <string name="_0">0</string>
 </resources>
