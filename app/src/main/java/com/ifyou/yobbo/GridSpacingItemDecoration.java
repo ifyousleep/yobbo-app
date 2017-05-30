@@ -4,13 +4,13 @@ import android.graphics.Rect;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-public class GridSpacingItemDecoratio extends RecyclerView.ItemDecoration {
+public class GridSpacingItemDecoration extends RecyclerView.ItemDecoration {
 
     private int spanCount;
     private int spacing;
     private boolean includeEdge;
 
-    public GridSpacingItemDecoratio(int spanCount, int spacing, boolean includeEdge) {
+    public GridSpacingItemDecoration(int spanCount, int spacing, boolean includeEdge) {
         this.spanCount = 0;
         this.spacing = 0;
         this.includeEdge = false;

@@ -47,7 +47,7 @@ public class StickActivity extends AppCompatActivity {
 
         Global.img = null;
         GridLayoutManager lLayout;
-        GridSpacingItemDecoratio gridSpacing;
+        GridSpacingItemDecoration gridSpacing;
         RecyclerFastScroller fastScroller;
 
         Intent intent = getIntent();
@@ -194,7 +194,7 @@ public class StickActivity extends AppCompatActivity {
         rView.setHasFixedSize(true);
         rView.setLayoutManager(lLayout);
 
-        gridSpacing = new GridSpacingItemDecoratio(2,
+        gridSpacing = new GridSpacingItemDecoration(2,
                 getResources().getDimensionPixelSize(R.dimen.lists_padding),
                 true);
         rView.addItemDecoration(gridSpacing);

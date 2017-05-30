@@ -84,27 +84,6 @@ public class SettingsFragment extends PreferenceFragment {
                     }
                 });
                 dialog.show(getActivity().getFragmentManager(), "color_dialog_test");
-                /*final int currentColor = mPrefs.getColor();
-                new MaterialDialog.Builder(getActivity())
-                        .title(R.string.color_title)
-                        .content(R.string.color_summary)
-                        .items(R.array.entries_color)
-                        .itemsCallbackSingleChoice(currentColor - 1,
-                                new MaterialDialog.ListCallbackSingleChoice() {
-                                    @Override
-                                    public boolean onSelection(MaterialDialog dialog, View itemView,
-                                                               int which, CharSequence text) {
-                                        int newInterval = which + 1;
-                                        if (newInterval != currentColor) {
-                                            mPrefs.setColor(newInterval);
-                                            changeValues();
-                                        }
-                                        return true;
-                                    }
-                                })
-                        .positiveText(android.R.string.ok)
-                        .negativeText(android.R.string.cancel)
-                        .show();*/
                 return true;
             }
         });
@@ -162,7 +141,7 @@ public class SettingsFragment extends PreferenceFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.text_example, null);
+        View v = inflater.inflate(R.layout.settings_example, container, false);
         StrokedTextView ex = (StrokedTextView) v.findViewById(R.id.ex);
         ex.setTextColor(mPrefs.getColor());
         int fontSize = 40;
@@ -212,11 +191,7 @@ public class SettingsFragment extends PreferenceFragment {
             chops = Typeface.DEFAULT;
         ex.setTypeface(chops);
         boolean stroke = mPrefs.getStrokeEnabled();
-        //int fontColor = mPrefs.getColor();
         if (stroke) {
-            /*if (fontColor != Color.parseColor("#ffffff") && fontColor != Color.parseColor("#FFEB3B"))
-                ex.setStrokeColor(Color.WHITE);
-            else*/
             ex.setStrokeColor(Color.BLACK);
             ex.setStrokeWidth(2);
         }

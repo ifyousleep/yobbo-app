@@ -61,8 +61,6 @@ public class EditorActivity extends AppCompatActivity {
     private com.github.clans.fab.FloatingActionButton fabC;
     private DiscreteSeekBar discrete;
     private FloatingActionMenu fam;
-    private Toolbar toolbar;
-    private TextView mTitle;
     private CircleImageView setcolor;
     private String textG;
     int numberData, enableCE;
@@ -78,32 +76,25 @@ public class EditorActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         if (Build.VERSION.SDK_INT >= 21) {
             getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
+            getWindow().setNavigationBarColor(ContextCompat.getColor(this, R.color.primary));
         }
         LayoutInflaterCompat.setFactory(getLayoutInflater(), new IconicsLayoutInflater(getDelegate()));
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editor);
 
-        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            getWindow().setNavigationBarColor(ContextCompat.getColor(this, R.color.primary));
-        }
-
         mPrefs = new Preferences(this);
         anim = mPrefs.getAnimEnabled();
-
         enableCE = 0;
-
-        //ActivityTransition.with(getIntent()).to(findViewById(R.id.fab_menu)).start(savedInstanceState);
-
         numberData = 0;
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
             getSupportActionBar().setDisplayShowTitleEnabled(false);
-            mTitle = (TextView) toolbar.findViewById(R.id.toolbar_title);
-            mTitle.setText(getResources().getString(R.string.fo_fab));
+            TextView title = (TextView) toolbar.findViewById(R.id.toolbar_title);
+            title.setText(getResources().getString(R.string.fo_fab));
         }
 
         customCanvas = (CanvasView) findViewById(R.id.signature_canvas);
@@ -142,14 +133,12 @@ public class EditorActivity extends AppCompatActivity {
         fam = (FloatingActionMenu) findViewById(R.id.fab_menu);
         if (fam != null) {
             fam.setClosedOnTouchOutside(true);
-            //fam.setBackgroundColor(Color.parseColor("#ccffffff"));
             fam.setMenuButtonColorNormalResId(R.color.colorAccent);
             fam.setMenuButtonColorPressedResId(R.color.colorAccent2);
             fam.setMenuButtonColorRippleResId(R.color.colorAccent3);
         }
 
         textG = "";
-
         com.github.clans.fab.FloatingActionButton fabS = (com.github.clans.fab.FloatingActionButton) findViewById(R.id.fabS);
         fabE = (com.github.clans.fab.FloatingActionButton) findViewById(R.id.fabE);
         fabC = (com.github.clans.fab.FloatingActionButton) findViewById(R.id.fabC);
@@ -179,7 +168,6 @@ public class EditorActivity extends AppCompatActivity {
             public void onClick(View view) {
                 File cache = getApplicationContext().getExternalCacheDir();
                 File sharefile = new File(cache, "crop.png");
-                //sharefile.delete();
                 try {
                     FileOutputStream out = new FileOutputStream(sharefile);
                     customCanvas.get().compress(Bitmap.CompressFormat.PNG, 100, out);
@@ -200,7 +188,6 @@ public class EditorActivity extends AppCompatActivity {
                 uCrop.withOptions(options);
                 uCrop.withAspectRatio(1, 1);
                 uCrop.start(EditorActivity.this);
-                //beginCrop(Uri.parse("file://" + sharefile));
                 fam.toggle(true);
             }
         });
@@ -324,17 +311,18 @@ public class EditorActivity extends AppCompatActivity {
         imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
     }
 
-    protected void showAlertDialog(@Nullable String title, @Nullable String message,
-                                   @Nullable DialogInterface.OnClickListener onPositiveButtonClickListener,
-                                   @NonNull String positiveText,
-                                   @Nullable DialogInterface.OnClickListener onNegativeButtonClickListener,
-                                   @NonNull String negativeText) {
+    protected void showAlertDialog(
+            @Nullable String title, @Nullable String message,
+            @Nullable DialogInterface.OnClickListener onPositiveButtonClickListener,
+            @NonNull String positiveText,
+            @Nullable DialogInterface.OnClickListener onNegativeButtonClickListener,
+            @NonNull String negativeText) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(title);
         builder.setMessage(message);
         builder.setPositiveButton(positiveText, onPositiveButtonClickListener);
         builder.setNegativeButton(negativeText, onNegativeButtonClickListener);
-        AlertDialog alertDialog = builder.show();
+        builder.show();
     }
 
     /**
@@ -405,13 +393,11 @@ public class EditorActivity extends AppCompatActivity {
         if (resultCode == UCrop.RESULT_ERROR) {
             handleCropError(data);
         }
-        //customCanvas.Fresh();
     }
 
     private void handleCropResult(@NonNull Intent result) {
         final Uri resultUri = UCrop.getOutput(result);
         if (resultUri != null) {
-            //Global.path = resultUri.toString();
             try {
                 Global.img = MediaStore.Images.Media.getBitmap(this.getContentResolver(), resultUri);
             } catch (Exception e) {
@@ -424,9 +410,6 @@ public class EditorActivity extends AppCompatActivity {
             discrete.setVisibility(View.INVISIBLE);
             setcolor.setVisibility(View.INVISIBLE);
             enableCE = 1;
-            /*Intent intent = new Intent(MainActivity.this, EditorActivity.class);
-            MainActivity.this.startActivity(intent);
-            overridePendingTransition(R.anim.push_up_in, R.anim.push_up_out);*/
         } else {
             Toast.makeText(EditorActivity.this, R.string.toast_cannot_retrieve_cropped_image, Toast.LENGTH_SHORT).show();
         }
@@ -520,9 +503,13 @@ public class EditorActivity extends AppCompatActivity {
         if (tooltip != null) {
             if (tooltip.isShowing())
                 tooltip.dismiss();
+            else
+                super.onBackPressed();
         }
-        if (anim && Global.img == null)
+        else if (anim && Global.img == null) {
             exitTransition.interpolator(new OvershootInterpolator()).exit(this);
+            super.onBackPressed();
+        }
         else
             super.onBackPressed();
     }

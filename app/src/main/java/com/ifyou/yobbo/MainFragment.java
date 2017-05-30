@@ -1,6 +1,5 @@
 package com.ifyou.yobbo;
 
-
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -9,10 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.InflateException;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -24,57 +20,39 @@ import java.util.List;
 
 public class MainFragment extends Fragment {
 
-    ViewGroup layout;
-    Activity context;
-    boolean anim;
+    private Activity context;
+    private boolean anim;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, final ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(final LayoutInflater inflater, final ViewGroup container,
+                             final Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_main, container, false);
+    }
+
+    @Override
+    public void onViewCreated(final View view, final Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         GridLayoutManager lLayout;
-        GridSpacingItemDecoratio gridSpacing;
+        GridSpacingItemDecoration gridSpacing;
         RecyclerFastScroller fastScroller;
-
-        setHasOptionsMenu(true);
         context = getActivity();
-
         Preferences mPrefs;
         mPrefs = new Preferences(context);
         anim = mPrefs.getAnimEnabled();
-
-        if (layout != null) {
-            ViewGroup parent = (ViewGroup) layout.getParent();
-            if (parent != null) {
-                parent.removeView(layout);
-            }
-        }
-        try {
-            layout = (ViewGroup) inflater.inflate(R.layout.fragment_main, container, false);
-        } catch (InflateException e) {
-            // Do nothing
-        }
-
         List<ItemObject> rowListItem = getAllItemList();
-
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE)
             lLayout = new GridLayoutManager(context, 3);
         else
             lLayout = new GridLayoutManager(context, 2);
-
-        RecyclerView rView = (RecyclerView) layout.findViewById(R.id.recycler_view);
-        fastScroller = (RecyclerFastScroller) layout.findViewById(R.id.rvFastScroller);
-
+        RecyclerView rView = (RecyclerView) view.findViewById(R.id.recycler_view);
+        fastScroller = (RecyclerFastScroller) view.findViewById(R.id.rvFastScroller);
         rView.setHasFixedSize(true);
         rView.setLayoutManager(lLayout);
-
-        gridSpacing = new GridSpacingItemDecoratio(2,
-                getResources().getDimensionPixelSize(R.dimen.lists_padding),
+        gridSpacing = new GridSpacingItemDecoration(2, getResources().getDimensionPixelSize(R.dimen.lists_padding),
                 true);
         rView.addItemDecoration(gridSpacing);
-
         RecyclerViewAdapter rcAdapter = new RecyclerViewAdapter(context, rowListItem);
         rView.setAdapter(rcAdapter);
-
         if (rView.getAdapter() != null) {
             fastScroller.attachRecyclerView(rView);
             if (fastScroller.getVisibility() != View.VISIBLE) {
@@ -93,21 +71,8 @@ public class MainFragment extends Fragment {
                     context.overridePendingTransition(0, 0);
                 } else
                     context.startActivity(intent);
-                //context.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
-
-        return layout;
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-    }
-
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
     }
 
     private List<ItemObject> getAllItemList() {

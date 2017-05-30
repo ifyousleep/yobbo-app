@@ -4,10 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.view.InflateException;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -17,55 +14,30 @@ import android.widget.TextView;
  */
 public class AboutFragment extends Fragment {
 
-    private ViewGroup layout;
-    private TextView gp;
-    private TextView gp2;
+    @Override
+    public View onCreateView(final LayoutInflater inflater, final ViewGroup container,
+                             final Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_about, container, false);
+    }
 
-    public View onCreateView(LayoutInflater inflater, final ViewGroup container,
-                             Bundle savedInstanceState) {
-
-        setHasOptionsMenu(true);
-
-        if (layout != null) {
-            ViewGroup parent = (ViewGroup) layout.getParent();
-            if (parent != null) {
-                parent.removeView(layout);
+    @Override
+    public void onViewCreated(final View view, final Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        TextView gp = (TextView) view.findViewById(R.id.aboutgp);
+        TextView gp2 = (TextView) view.findViewById(R.id.aboutgp2);
+        gp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://plus.google.com/u/0/115708999579517686862"));
+                startActivity(browserIntent);
             }
-        }
-        try {
-            layout = (ViewGroup) inflater.inflate(R.layout.fragment_abour, container, false);
-        } catch (InflateException e) {
-            // Do nothing
-        }
-
-        if (layout != null) {
-            gp = (TextView) layout.findViewById(R.id.aboutgp);
-            gp2 = (TextView) layout.findViewById(R.id.aboutgp2);
-            gp.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://plus.google.com/u/0/115708999579517686862"));
-                    startActivity(browserIntent);
-                }
-            });
-            gp2.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://plus.google.com/u/0/113175829569090793963"));
-                    startActivity(browserIntent);
-                }
-            });
-        }
-        return layout;
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-    }
-
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
+        });
+        gp2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://plus.google.com/u/0/113175829569090793963"));
+                startActivity(browserIntent);
+            }
+        });
     }
 }

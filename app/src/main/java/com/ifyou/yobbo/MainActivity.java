@@ -11,7 +11,6 @@ import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -51,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         if (Build.VERSION.SDK_INT >= 21) {
             getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
+            getWindow().setNavigationBarColor(ContextCompat.getColor(this, R.color.primary));
         }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -58,15 +58,11 @@ public class MainActivity extends AppCompatActivity {
         AccountHeader headerResult;
         Global.img = null;
 
-        //ToDo
-        new PiracyChecker(this)
-                .enableGooglePlayLicensing("MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAk1TbKBSaPN7zlaa+MRN+i+bTqutydUao1QTHqNLJ+ZPmppgbD78TLF57T8bKXlediSJqTBra65Z7tdRZCUHzKAiDhBLoUBZ2lQWtW/v5g6G6C+e7Mxgh6rZf9ATTlW/WxCdHH/1kbvxylUKzyMXiD4McjMbzMUR0fn8xopWuIsWxsnPSEE3jK+/MOWXLMbpex7FJo7Icw4/oPLeNt0QZqyHjragoaVelqC3ionKalL6u+ZMEIV0P/7GgAdrcn/LpzK1wfRLkpJGelfFRGPWYZ9siZMxz1fOmEMdIrlCnJl+IQSxAsQciOQnfUO5W5sVPM35yi41wRZIrOCkghPx5CwIDAQAB")
-                .enableInstallerId(InstallerID.GOOGLE_PLAY)
-                .start();
-
-        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            getWindow().setNavigationBarColor(ContextCompat.getColor(this, R.color.primary));
-        }
+        if (!BuildConfig.DEBUG)
+            new PiracyChecker(this)
+                    .enableGooglePlayLicensing("MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAk1TbKBSaPN7zlaa+MRN+i+bTqutydUao1QTHqNLJ+ZPmppgbD78TLF57T8bKXlediSJqTBra65Z7tdRZCUHzKAiDhBLoUBZ2lQWtW/v5g6G6C+e7Mxgh6rZf9ATTlW/WxCdHH/1kbvxylUKzyMXiD4McjMbzMUR0fn8xopWuIsWxsnPSEE3jK+/MOWXLMbpex7FJo7Icw4/oPLeNt0QZqyHjragoaVelqC3ionKalL6u+ZMEIV0P/7GgAdrcn/LpzK1wfRLkpJGelfFRGPWYZ9siZMxz1fOmEMdIrlCnJl+IQSxAsQciOQnfUO5W5sVPM35yi41wRZIrOCkghPx5CwIDAQAB")
+                    .enableInstallerId(InstallerID.GOOGLE_PLAY)
+                    .start();
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -111,10 +107,10 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, R.string.noconnect, Toast.LENGTH_LONG).show();
         }
 
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.main, Fragment.instantiate(this,
-                        "com.ifyou.yobbo.MainFragment"))
-                .commit();
+        if (savedInstanceState == null)
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.main, new MainFragment())
+                    .commit();
     }
 
 
@@ -124,24 +120,21 @@ public class MainActivity extends AppCompatActivity {
             case 1:
                 getSupportFragmentManager().beginTransaction()
                         .setCustomAnimations(R.anim.enter, R.anim.exit, R.anim.pop_enter, R.anim.pop_exit)
-                        .replace(R.id.main, Fragment.instantiate(MainActivity.this,
-                                "com.ifyou.yobbo.MainFragment"))
+                        .replace(R.id.main, new MainFragment())
                         .commit();
                 toolbar.setTitle(R.string.app_name);
                 break;
             case 2:
                 getSupportFragmentManager().beginTransaction()
                         .setCustomAnimations(R.anim.enter, R.anim.exit, R.anim.pop_enter, R.anim.pop_exit)
-                        .replace(R.id.main, Fragment.instantiate(MainActivity.this,
-                                "com.ifyou.yobbo.AboutFragment"))
+                        .replace(R.id.main, new AboutFragment())
                         .commit();
                 toolbar.setTitle(R.string.drawer_item_about);
                 break;
             case 3:
                 getSupportFragmentManager().beginTransaction()
                         .setCustomAnimations(R.anim.enter, R.anim.exit, R.anim.pop_enter, R.anim.pop_exit)
-                        .replace(R.id.main, Fragment.instantiate(MainActivity.this,
-                                "com.ifyou.yobbo.SettingsFragment"))
+                        .replace(R.id.main, new SettingsFragment())
                         .commit();
                 toolbar.setTitle(R.string.drawer_item_settings);
                 break;
