@@ -26,21 +26,20 @@ public class CanvasView extends View {
 
     private Bitmap mBitmap;
     private Bitmap sBitmap;
-    final Context context;
+    private final Context context;
     private float mX, mY;
     private static final float TOLERANCE = 5;
-    //private float mAngle;
-    String textOn;
-    TextPaint fontPaint;
-    TextPaint strokePaint;
-    String typeFont;
-    int fontSize, fontColor;
-    //float width;
-    float scale;
-    StaticLayout sl, s2;
-    boolean stroke;
-    //boolean anim;
-    int textHeight;
+    private String textOn;
+    private TextPaint fontPaint;
+    private TextPaint strokePaint;
+    private String typeFont;
+    private int fontSize;
+    private int fontColor;
+    private float scale;
+    private StaticLayout sl;
+    private StaticLayout s2;
+    private boolean stroke;
+    private int textHeight;
 
     public CanvasView(Context c, AttributeSet attrs) {
         super(c, attrs);
@@ -168,24 +167,12 @@ public class CanvasView extends View {
         int s_height = metrics.heightPixels - getStatusBarHeight();
         int s_wight = metrics.widthPixels;
         sBitmap = resize(mBitmap, s_wight, s_height);
-
-        /*int [] allpixels = new int [sBitmap.getHeight()*sBitmap.getWidth()];
-        sBitmap.getPixels(allpixels, 0, sBitmap.getWidth(), 0, 0, sBitmap.getWidth(), sBitmap.getHeight());
-        for(int i = 0; i < allpixels.length; i++)
-        {
-            if(allpixels[i] == Color.WHITE)
-            {
-                allpixels[i] = Color.TRANSPARENT;
-            }
-        }
-        sBitmap.setPixels(allpixels, 0, sBitmap.getWidth(), 0, 0, sBitmap.getWidth(), sBitmap.getHeight());*/
-
         mX = s_wight / 2;
         mY = s_height / 2;
         invalidate();
     }
 
-    public int getStatusBarHeight() {
+    private int getStatusBarHeight() {
         int result = 0;
         int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
         if (resourceId > 0) {
@@ -240,10 +227,6 @@ public class CanvasView extends View {
         }
         canvas.restore();
     }
-
-    /*public void Fresh() {
-        invalidate();
-    }*/
 
     public Bitmap get() {
         invalidate();
@@ -316,11 +299,8 @@ public class CanvasView extends View {
     //override the onTouchEvent
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-
         float x = event.getX();
         float y = event.getY();
-
-        //switch (event.getAction()) {
         switch (event.getActionMasked()) {
             case MotionEvent.ACTION_DOWN:
                 startTouch(x, y);

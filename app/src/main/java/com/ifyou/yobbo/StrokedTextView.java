@@ -88,7 +88,7 @@ public class StrokedTextView extends AppCompatButton {
      * @param dp density independent pixel value
      * @return device specific pixel value.
      */
-    public static int dpToPx(Context context, float dp)
+    private static int dpToPx(Context context, float dp)
     {
         final float scale= context.getResources().getDisplayMetrics().density;
         return (int) (dp * scale + 0.5f);

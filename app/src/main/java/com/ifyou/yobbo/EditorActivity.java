@@ -63,12 +63,13 @@ public class EditorActivity extends AppCompatActivity {
     private FloatingActionMenu fam;
     private CircleImageView setcolor;
     private String textG;
-    int numberData, enableCE;
+    private int numberData;
+    private int enableCE;
     private TextView txt;
     private static final String SAMPLE_CROPPED_IMAGE_NAME = "crop";
-    protected static final int REQUEST_STORAGE_WRITE_ACCESS_PERMISSION = 102;
+    private static final int REQUEST_STORAGE_WRITE_ACCESS_PERMISSION = 102;
     private ExitActivityTransition exitTransition;
-    boolean anim;
+    private boolean anim;
     private Preferences mPrefs;
     private SimpleTooltip tooltip;
 
@@ -250,7 +251,7 @@ public class EditorActivity extends AppCompatActivity {
         }
     };
 
-    public void showInputDialog(String ourText) {
+    private void showInputDialog(String ourText) {
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
         LayoutInflater inflater = this.getLayoutInflater();
         final View dialogView = inflater.inflate(R.layout.custom_dialog, null);
@@ -311,7 +312,7 @@ public class EditorActivity extends AppCompatActivity {
         imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
     }
 
-    protected void showAlertDialog(
+    private void showAlertDialog(
             @Nullable String title, @Nullable String message,
             @Nullable DialogInterface.OnClickListener onPositiveButtonClickListener,
             @NonNull String positiveText,
@@ -330,7 +331,7 @@ public class EditorActivity extends AppCompatActivity {
      * If the permission has been denied previously, a Dialog will prompt the user to grant the
      * permission, otherwise it is requested directly.
      */
-    protected void requestPermission(final String permission, String rationale, final int requestCode) {
+    private void requestPermission(final String permission, String rationale, final int requestCode) {
         if (ActivityCompat.shouldShowRequestPermissionRationale(this, permission)) {
             showAlertDialog(getString(R.string.permission_title_rationale), rationale,
                     new DialogInterface.OnClickListener() {
@@ -345,7 +346,7 @@ public class EditorActivity extends AppCompatActivity {
         }
     }
 
-    public void sHare(Bitmap bitmap) {
+    private void sHare(Bitmap bitmap) {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED) {
             requestPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE,
@@ -427,14 +428,12 @@ public class EditorActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(final MenuItem item) {
-        // handle arrow click here
         if (item.getItemId() == android.R.id.home) {
             if (tooltip != null) {
                 if (tooltip.isShowing())
@@ -503,13 +502,9 @@ public class EditorActivity extends AppCompatActivity {
         if (tooltip != null) {
             if (tooltip.isShowing())
                 tooltip.dismiss();
-            else
-                super.onBackPressed();
         }
-        else if (anim && Global.img == null) {
+        if (anim && Global.img == null)
             exitTransition.interpolator(new OvershootInterpolator()).exit(this);
-            super.onBackPressed();
-        }
         else
             super.onBackPressed();
     }

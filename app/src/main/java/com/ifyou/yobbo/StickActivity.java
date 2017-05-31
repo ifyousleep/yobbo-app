@@ -13,12 +13,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
-import android.view.animation.OvershootInterpolator;
 import android.widget.TextView;
 
-import com.kogitune.activity_transition.ActivityTransition;
 import com.kogitune.activity_transition.ActivityTransitionLauncher;
-import com.kogitune.activity_transition.ExitActivityTransition;
 import com.pluscubed.recyclerfastscroll.RecyclerFastScroller;
 
 import java.util.ArrayList;
@@ -26,8 +23,8 @@ import java.util.List;
 
 public class StickActivity extends AppCompatActivity {
 
-    int numberData;
-    boolean anim;
+    private int numberData;
+    private boolean anim;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -181,14 +178,10 @@ public class StickActivity extends AppCompatActivity {
         }
 
         final List<ItemObject> rowListItem = getAllItemList();
-
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE)
             lLayout = new GridLayoutManager(StickActivity.this, 3);
         else
             lLayout = new GridLayoutManager(StickActivity.this, 2);
-
-        //ActivityTransition.with(getIntent()).to(findViewById(R.id.recycler_view)).start(savedInstanceState);
-
         RecyclerView rView = (RecyclerView) findViewById(R.id.recycler_view);
         fastScroller = (RecyclerFastScroller) findViewById(R.id.rvFastScroller);
         rView.setHasFixedSize(true);
@@ -222,53 +215,20 @@ public class StickActivity extends AppCompatActivity {
                 }
             }
         });
-
-        ExitActivityTransition exitTransition;
-        if (anim)
-            exitTransition = ActivityTransition
-                    .with(getIntent())
-                    .to(findViewById(R.id.recycler_view))
-                    .duration(700)
-                    .interpolator(new OvershootInterpolator())
-                    .start(savedInstanceState);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-            if (anim)
-                super.onBackPressed();
-                //exitTransition.interpolator(new OvershootInterpolator()).exit(this);
-            else
-                super.onBackPressed(); // close this activity and return to preview activity (if there is any)
-            //exitTransition.interpolator(new OvershootInterpolator()).exit(this);
-            //overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+            super.onBackPressed();
         }
-
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        //add the values which need to be saved from the drawer to the bundle
-        super.onSaveInstanceState(outState);
     }
 
     @Override
     public void onResume() {
         super.onResume();
         Global.img = null;
-    }
-
-    @Override
-    public void onBackPressed() {
-        if (anim) {
-            super.onBackPressed();
-            //exitTransition.interpolator(new OvershootInterpolator()).exit(this);
-        } else
-            super.onBackPressed();
-        //exitTransition.interpolator(new OvershootInterpolator()).exit(this);
-        //overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 
     private List<ItemObject> getAllItemList() {

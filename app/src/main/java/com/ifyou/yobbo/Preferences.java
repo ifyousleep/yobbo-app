@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 
-public class Preferences {
+class Preferences {
 
     private static final String
             PREFERENCES_NAME = "YOBBO_PREFERENCES",

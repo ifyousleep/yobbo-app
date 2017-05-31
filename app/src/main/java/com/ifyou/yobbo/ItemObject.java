@@ -1,6 +1,6 @@
 package com.ifyou.yobbo;
 
-public class ItemObject {
+class ItemObject {
 
     private String name;
     private String photo;

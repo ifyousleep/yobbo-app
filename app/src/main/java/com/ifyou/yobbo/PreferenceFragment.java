@@ -145,7 +145,7 @@ public abstract class PreferenceFragment extends Fragment {
         return mPreferenceManager;
     }
 
-    public void setPreferenceScreen(PreferenceScreen screen) {
+    private void setPreferenceScreen(PreferenceScreen screen) {
         try {
             Method m = PreferenceManager.class.getDeclaredMethod("setPreferences", PreferenceScreen.class);
             m.setAccessible(true);
@@ -160,7 +160,7 @@ public abstract class PreferenceFragment extends Fragment {
         }
     }
 
-    public PreferenceScreen getPreferenceScreen() {
+    private PreferenceScreen getPreferenceScreen() {
         try {
             Method m = PreferenceManager.class.getDeclaredMethod("getPreferenceScreen");
             m.setAccessible(true);
@@ -181,7 +181,7 @@ public abstract class PreferenceFragment extends Fragment {
         }
     }
 
-    public void addPreferencesFromResource(int resId) {
+    void addPreferencesFromResource(int resId) {
         requirePreferenceManager();
         try {
             Method m = PreferenceManager.class.getDeclaredMethod("inflateFromResource", Context.class, int.class, PreferenceScreen.class);
@@ -192,7 +192,7 @@ public abstract class PreferenceFragment extends Fragment {
         }
     }
 
-    public Preference findPreference(CharSequence key) {
+    Preference findPreference(CharSequence key) {
         if (mPreferenceManager == null) {
             return null;
         }
@@ -218,7 +218,7 @@ public abstract class PreferenceFragment extends Fragment {
         }
     }
 
-    public ListView getListView() {
+    private ListView getListView() {
         ensureList();
         return mList;
     }

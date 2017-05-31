@@ -39,10 +39,10 @@ import java.io.File;
 public class MainActivity extends AppCompatActivity {
 
     private Drawer result = null;
-    public static long currentItem = 1;
+    private static long currentItem = 1;
     private static final String MARKET_URL = "https://play.google.com/store/apps/details?id=";
     private static final int REQUEST_SELECT_PICTURE = 0x01;
-    protected static final int REQUEST_STORAGE_READ_ACCESS_PERMISSION = 101;
+    private static final int REQUEST_STORAGE_READ_ACCESS_PERMISSION = 101;
     private static final String SAMPLE_CROPPED_IMAGE_NAME = "crop";
     private Toolbar toolbar;
 
@@ -183,7 +183,7 @@ public class MainActivity extends AppCompatActivity {
      * If the permission has been denied previously, a Dialog will prompt the user to grant the
      * permission, otherwise it is requested directly.
      */
-    protected void requestPermission(final String permission, String rationale, final int requestCode) {
+    private void requestPermission(final String permission, String rationale, final int requestCode) {
         if (ActivityCompat.shouldShowRequestPermissionRationale(this, permission)) {
             showAlertDialog(getString(R.string.permission_title_rationale), rationale,
                     new DialogInterface.OnClickListener() {
@@ -198,7 +198,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    protected void showAlertDialog(
+    private void showAlertDialog(
             @Nullable String title, @Nullable String message,
             @Nullable DialogInterface.OnClickListener onPositiveButtonClickListener,
             @NonNull String positiveText,

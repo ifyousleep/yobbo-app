@@ -20,9 +20,9 @@ import org.xdty.preference.colorpicker.ColorPickerSwatch;
 public class SettingsFragment extends PreferenceFragment {
 
     private Preferences mPrefs;
-    Preference sSetting;
-    Preference cSetting;
-    Preference fSetting;
+    private Preference sSetting;
+    private Preference cSetting;
+    private Preference fSetting;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -198,7 +198,7 @@ public class SettingsFragment extends PreferenceFragment {
         return v;
     }
 
-    public void changeValues() {
+    private void changeValues() {
         sSetting.setSummary(getSize());
         cSetting.setSummary(getColor());
         fSetting.setSummary(getFont());

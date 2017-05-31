@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/light"
         android:orientation="vertical">
-
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -39,7 +40,7 @@
                     <ImageView
                         android:layout_width="160dp"
                         android:layout_height="160dp"
-                        android:src="@drawable/b" />
+                        android:src="@drawable/b"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -55,7 +56,7 @@
                             android:gravity="center"
                             android:text="@string/baranov"
                             android:textColor="@android:color/black"
-                            android:textSize="17sp" />
+                            android:textSize="17sp"/>
 
                         <TextView
                             android:id="@+id/aboutabout"
@@ -64,7 +65,7 @@
                             android:gravity="center"
                             android:text="@string/baranov_txt"
                             android:textColor="@color/dark"
-                            android:textSize="14sp" />
+                            android:textSize="14sp"/>
 
                         <TextView
                             android:id="@+id/aboutgp"
@@ -73,7 +74,7 @@
                             android:gravity="center"
                             android:text="@string/googlep"
                             android:textColor="@color/accent"
-                            android:textSize="17sp" />
+                            android:textSize="17sp"/>
 
                     </LinearLayout>
 
@@ -110,7 +111,7 @@
                     <ImageView
                         android:layout_width="160dp"
                         android:layout_height="160dp"
-                        android:src="@drawable/k" />
+                        android:src="@drawable/k"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -126,7 +127,7 @@
                             android:gravity="center"
                             android:text="@string/kizim"
                             android:textColor="@android:color/black"
-                            android:textSize="17sp" />
+                            android:textSize="17sp"/>
 
                         <TextView
                             android:id="@+id/aboutabout2"
@@ -135,7 +136,7 @@
                             android:gravity="center"
                             android:text="@string/kizim_txt"
                             android:textColor="@color/dark"
-                            android:textSize="14sp" />
+                            android:textSize="14sp"/>
 
                         <TextView
                             android:id="@+id/aboutgp2"
@@ -144,7 +145,7 @@
                             android:gravity="center"
                             android:text="@string/googlep"
                             android:textColor="@color/accent"
-                            android:textSize="17sp" />
+                            android:textSize="17sp"/>
 
                     </LinearLayout>
 
